@@ -6,14 +6,15 @@ function playGame() {
     const choicesLen = choices.length;
 
     const computerChoice = Math.floor(Math.random() * choicesLen);
-
-    return choices[computerChoice];
+    console.log("computer choice", choices[computerChoice]);
+    return computerChoice;
   }
 
   //  ask user for its choice
   function getUserChoice() {
     const userChoice = prompt("Choose 1 for Rock, 2 for Paper, or 3 for Scissors");
-    return choices[userChoice];
+    console.log("user choice", choices[userChoice - 1]);
+    return userChoice - 1;
   }
 
   // declare variables to keep track of scores
@@ -21,46 +22,24 @@ function playGame() {
   let computerScore = 0;
 
   // Function to play in rounds
-  let round = 0;
+  let round = 1;
 
   function playRound(userChoice, computerChoice) {
     console.log(`-------- Round: ${round} --------`);
     // winning logic
-    if(userChoice === choices[0]){ // Rock
-        if(computerChoice === choices[0])
-            console.log(`Its a tie. Both player chose ${choices[0]}`);
-        else if(computerChoice === choices[1]){ // paper
-            console.log(`User lost!! Round: ${round}`);
-            computerScore = computerScore + 1;
-        }
-        else {
-            console.log(`User won!! Round: ${round}`);
-            userScore++;
-        }
+    if(userChoice === computerChoice){
+        console.log(`Its a tie. Both player chose ${choices[userChoice]}`);
     }
-    else if(userChoice === choices[1]){ // paper
-        if(computerChoice === choices[1])
-            console.log(`Its a tie. Both player chose ${choices[1]}`);
-        else if(computerChoice === choices[0]){ // rock
-            console.log(`User won!! Round: ${round}`);
-            userScore++;
-        }
-        else {
-            console.log(`User lost!! Round: ${round}`);
-            computerScore++;
-        }
+    else if( (choices[userChoice] === "Rock" && choices[computerChoice] === "Scissors") 
+        || (choices[userChoice] === "Paper" && choices[computerChoice] === "Rock") 
+        || (choices[userChoice] === "Scissors" && choices[computerChoice] === "Paper")
+    ){
+        console.log(`User won! ${choices[userChoice]} beats ${choices[computerChoice]}, Round: ${round}`);
+        userScore++;
     }
-    else { // scissors
-        if(computerChoice === choices[2])
-            console.log(`Its a tie. Both player chose ${choices[2]}`);
-        else if(computerChoice === choices[0]){ // rock
-            console.log(`User lost!! Round: ${round}`);
-            computerScore++;
-        }
-        else {
-            console.log(`User won!! Round: ${round}`);
-            userScore++;
-        }
+    else{ 
+        console.log(`User lost! ${choices[computerChoice]} beats ${choices[userChoice]}, Round: ${round}`);
+        computerScore++;
     }
     round = round + 1;
   }
