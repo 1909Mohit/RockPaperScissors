@@ -5,11 +5,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: rgba(226, 226, 226, 0.349);
 }
 
 .container{
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -21,24 +25,34 @@ h1 {
 
 .choices button{
     margin: 0;
-    padding: 0;
-    border: none;
+    padding: 8px 20px;
     background: none;
     cursor: pointer;
     font-size: medium;
-    color: rgb(228, 15, 175);
+    font-weight: bold;
+    color: rgb(34, 34, 34);
+    border: 2px solid rgb(187, 47, 4);
+    border-radius: 5px;
+    background-color: rgba(148, 235, 191, 0.425);
 }
 
 .choices {
-    border: 2px solid rgb(245, 179, 199);
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 5px;
-    padding: 8px 16px;
+    padding: 16px 16px;
     display: flex;
     gap: 8px;
-    color: rgb(179, 104, 82);
+    /* color: rgb(179, 104, 82); */
+    background-color: rgba(190, 223, 238, 0.534);
     justify-content: space-around;
 }
 
-/* .score{
+.score{
     display: flex;
-} */
+    /* flex-direction: column; */
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
